@@ -480,7 +480,8 @@ figure figcaption p {
    cursor: not-allowed ! important;
    opacity: 0.4;
 }
-#trackpage #contact-section select#sel {
+#trackpage #contact-section select#length,
+#trackpage #contact-section select#type {
   height: 40px;
 }
 

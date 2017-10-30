@@ -86,16 +86,17 @@ $('#track').on({
             url:"sn.php",
             dataType: "json",
             data:{
-                selvalue: $('#sel').val(),
-                snvalue:$('#sn').val()
+                lengthvalue: $('#length').val(),
+                snvalue:$('#sn').val(),
+                typevalue:$('#type').val()
                 },
             success: function(datat){
                if (datat.success) {
                     $("#sel").removeClass('err');
                     $('#title').replaceWith('<h3 id="title">Tracking Result:</h3>');
-                    $('#ajaxresponse').replaceWith('<table class="table table-hover table-responsive" id="ajaxresponse"><thead class="thead-inverse"><tr><td>ITEM No.</td><td>Description</td><td>DIE#</td><td>Length</td><td>Finish</td><td>Alloy</td><td>Color</td></tr></thead><tbody></tbody></table>');
+                    $('#ajaxresponse').replaceWith('<table class="table table-hover table-responsive" id="ajaxresponse"><thead class="thead-inverse"><tr><td>Item</td><td>Type</td><td>DIE#</td><td>Length</td><td>Finish</td><td>Alloy</td><td>Color</td><td>Fab</td></tr></thead><tbody></tbody></table>');
                     for (var i = 0; i < datat.size; i++) {  
-                        var newString = ['<tr><td>'+datat.result[i].item+'</td><td>'+datat.result[i].des+'</td><td>'+datat.result[i].die+'</td><td>'+datat.result[i].length+'</td><td>'+datat.result[i].finish+'</td><td>'+datat.result[i].alloy+'</td>'+'</td><td>'+datat.result[i].color+'</td></tr>'].join('');
+                        var newString = ['<tr><td>'+datat.result[i].item+'</td><td>'+datat.result[i].cat+'</td><td>'+datat.result[i].dims+'</td><td>'+datat.result[i].die+'</td><td>'+datat.result[i].length+'</td><td>'+datat.result[i].alloy+'</td>'+'</td><td>'+datat.result[i].color+'</td><td>'+datat.result[i].fab+'</td></tr>'].join('');
                         $('#ajaxresponse tbody').append(newString);
                     }
                      console.log('povalid');
