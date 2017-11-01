@@ -16,15 +16,7 @@ $currentPage = 'track';
             <div class="col-md-12">
                 <div class="block">
                     <h2>Track Inventory</h2>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.php">
-                                <i class="ion-ios-home"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li class="active">Track Inventory</li>
-                    </ol>
+                    
                 </div>
             </div>
         </div>
@@ -48,57 +40,22 @@ $currentPage = 'track';
                     <div class="contact-form">
                         <div class="col-lg-12 clearfix">
                             <div class="address wow fadeInLeft clearfix" data-wow-duration="500ms" data-wow-delay=".3s">
-                                <form action="">
-                                    <div class="col-lg-3" style="text-align: left; padding-top:10px;">
-                                        <label for="sn"> <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">SN Number</h2></label>
-                                         <input type="text" id="sn">
-                                    </div>
-                                    <div class="col-lg-4" style="text-align: left; padding-top:10px;">
-                                         <label for="type"> <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">TYPE</h2></label>
-                                         <select  class="form-control"  id="type">
-                                            <option>Select Type</option>
-                                            <option value="all">All</option>
-                                            <option value="PAINT COIL">PAINT COIL</option>
-                                            <option value="POST">POST</option>
-                                            <option value="PKT">PKT</option>
-                                            <option value="STRINGERS">STRINGERS</option>
-                                            <option value="HEADER">HEADER</option>
-                                            <option value="COM PKT">COM PKT</option>
-                                            <option value="COM FLUSH BOTTOM">COM FLUSH BOTTOM</option>
-                                            <option value="Round Baluster">Round Baluster</option>
-                                          </select>
-                                    </div>
-                                    <div class="col-lg-3" style="text-align: left; padding-top:10px;">
-                                         <label for="length"> <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Length</h2></label>
-                                         <select  class="form-control"  id="length">
-                                            <option>Select Length</option>
-                                            <option value="all">All</option>
-                                            <option value="48">48</option>
-                                            <option value="54">54</option>
-                                            <option value="65">65</option>
-                                            <option value="72">72</option>
-                                            <option value="84">84</option>
-                                            <option value="96">96</option>
-                                          </select>
-                                    </div>
-                                    
-                                    <div class="col-lg-2" style="padding-top: 8px; padding-left: 30px;">
-                                         <label for=""> <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">&nbsp;</h2></label>
-                                            <input type="button" value="Track" class="btn btn-default" id="track">
-                                    </div>
-                                </form>   
-                            </div>
-
-
-                            <div id="res">
-                                <h3 id="title"></h3>
-                                <table id="ajaxresponse">
-                                     
+                                <table id="track"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Length</th>
+                                            <th>Cataloge</th>
+                                            <th>Dims</th>
+                                            <th>Die No.</th>
+                                            <th>Finish</th>
+                                            <th>Alloy</th>
+                                            <th>Color</th>
+                                            <th>FAB</th>
+                                        </tr>
+                                    </thead>
                                 </table>
-                            </div> 
-
-
-
+                            </div>
 
                         </div>
                                                  
@@ -122,6 +79,29 @@ $currentPage = 'track';
 
 <?php include('include/footer.php'); ?>   
 <script type="text/javascript" src="assets/js/app.js"></script>   
+<script type="text/javascript" language="javascript" >
+$(document).ready(function() {
+ 
+            var dataTable = $('#track').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url :"trackbck.php", // json datasource
+                    type: "post",  // method  , by default get
+                    error: function(){  
+                        $(".error").html("");
+                        $("#inventory-grid").append('<tbody class="inventory-grid-error"><tr><th colspan="9">No data found in the server</th></tr></tbody>');
+                        $("#inventory-grid_processing").css("display","none");
+                        
+                    }
+                }
+            });
+
+ 
+ 
+});
+</script>
+ 
 </body>
 </html>
 

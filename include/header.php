@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <!-- responsive css -->
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/jquery.dataTables.css">
+
 </head>
 <!--
 ==================================================

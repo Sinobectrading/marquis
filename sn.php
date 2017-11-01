@@ -6,6 +6,18 @@ header("Content-Type: application/json;charset=utf-8");
 
 include_once 'db.php';	
 include_once 'func.php';
+include_once 'include/pagination.class.php';
+//Pagination
+$perPage = new PerPage();
+$paginationlink = "getresult.php?page=";					
+$page = 1;
+if(!empty($_GET["page"])) {
+	$page = $_GET["page"];
+}
+$start = ($page-1)*$perPage->perpage;
+if($start < 0) {
+	$start = 0;
+}
 
 
 if( isset($_POST["snvalue"]) && isset($_POST["lengthvalue"])  && isset($_POST["typevalue"]) ) {

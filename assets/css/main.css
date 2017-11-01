@@ -30,6 +30,25 @@ h2 {
 a:hover {
   text-decoration: none;
 }
+#contact-section  #track_filter input[type="search"]{
+    height: 40px;
+    width: 200px;
+    border: 1px solid #02bdd5;
+    margin-top: 0px;
+    float: left;
+ }
+#contact-section  #track_filter label {
+    /* Other styling.. */
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-left:15px;
+    line-height: 40px;
+    position: relative;
+}
+
+ 
+ 
 .flex {
   display: flex;
   justify-content: space-between;
