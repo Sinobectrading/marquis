@@ -31,15 +31,26 @@ a:hover {
   text-decoration: none;
 }
 
-table.dataTable span.highlight {
-  background-color: #FFFF88;
-  border-radius: 0.28571429rem;
+#track select {
+  height: 40px;
+  border: 0px transparent;
+  background: #f7f7f7
+}
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  text-align: center;
+} 
+
+
+#contact-section #track input {
+  width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0px transparent;
+  background: #f7f7f7
 }
 
-table.dataTable span.column_highlight {
-  background-color: #ffcc99;
-  border-radius: 0.28571429rem;
-}
 #contact-section  #track_filter input[type="search"]{
     height: 40px;
     width: 200px;

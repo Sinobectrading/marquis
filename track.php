@@ -46,7 +46,7 @@ $currentPage = 'track';
                                             <th>Item</th>
                                             <th>
                                                 <select data-column="1"  class="search-input-select">
-                                                    <option value="">Select a length</option>
+                                                    <option value="">Length</option>
                                                     <option value="17">17</option>
                                                     <option value="48">48</option>
                                                     <option value="54">54</option>
@@ -55,7 +55,9 @@ $currentPage = 'track';
                                             </th>
                                             <th>Category</th>
                                             <th>Dims</th>
-                                            <th>Die No.</th>
+                                            <th>
+                                                <input type="text" data-column="4"  class="search-input-text" placeholder="Die No.">
+                                            </th>
                                             <th>Finish</th>
                                             <th>Alloy</th>
                                             <th>Color</th>
@@ -101,7 +103,14 @@ $(document).ready(function() {
                     $("#inventory-grid_processing").css("display","none");
                }
           }            
-     });
+    });
+
+     $('.search-input-text').on( 'keyup click', function () {   // for text boxes
+        var i =$(this).attr('data-column');  // getting column index
+        var v =$(this).val();  // getting search input value
+        dataTable.columns(i).search(v).draw();
+    } );
+                
 
     $('.search-input-select').on('change', function() {   // for select box
         var i =$(this).attr('data-column');  
