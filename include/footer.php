@@ -53,6 +53,7 @@ Footer Section Start
 <!-- template main js -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/ajaxtable.min.js"></script>
+ 
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

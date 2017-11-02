@@ -44,8 +44,16 @@ $currentPage = 'track';
                                     <thead>
                                         <tr>
                                             <th>Item</th>
-                                            <th>Length</th>
-                                            <th>Cataloge</th>
+                                            <th>
+                                                <select data-column="1"  class="search-input-select">
+                                                    <option value="">Select a length</option>
+                                                    <option value="17">17</option>
+                                                    <option value="48">48</option>
+                                                    <option value="54">54</option>
+                                                    <option value="72">72</option>
+                                                </select>
+                                            </th>
+                                            <th>Category</th>
                                             <th>Dims</th>
                                             <th>Die No.</th>
                                             <th>Finish</th>
@@ -81,24 +89,27 @@ $currentPage = 'track';
 <script type="text/javascript" src="assets/js/app.js"></script>   
 <script type="text/javascript" language="javascript" >
 $(document).ready(function() {
- 
-            var dataTable = $('#track').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax":{
-                    url :"trackbck.php", // json datasource
-                    type: "post",  // method  , by default get
-                    error: function(){  
-                        $(".error").html("");
-                        $("#inventory-grid").append('<tbody class="inventory-grid-error"><tr><th colspan="9">No data found in the server</th></tr></tbody>');
-                        $("#inventory-grid_processing").css("display","none");
-                        
-                    }
-                }
-            });
+     var dataTable = $('#track').DataTable({
+          "processing": true,
+          "serverSide": true,
+          "ajax":{
+               url :"trackbck.php", // json datasource
+               type: "post",  // method  , by default get
+               error: function(){  
+                    $(".error").html("");
+                    $("#inventory-grid").append('<tbody class="inventory-grid-error"><tr><th colspan="9">No data found in the server</th></tr></tbody>');
+                    $("#inventory-grid_processing").css("display","none");
+               }
+          }            
+     });
 
- 
- 
+    $('.search-input-select').on('change', function() {   // for select box
+        var i =$(this).attr('data-column');  
+        var v =$(this).val();  
+        dataTable.columns(i).search(v).draw();
+    });
+
+
 });
 </script>
  

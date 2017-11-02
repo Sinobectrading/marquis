@@ -31,7 +31,7 @@ $columns = array(
 // getting total number records without any search
 $sql = "SELECT * ";
 $sql.=" FROM inventory";
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get inventory");
+$query=mysqli_query($conn, $sql) or die("trackbck.php: get inventory");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -44,7 +44,7 @@ $sql.=" FROM inventory WHERE 1=1";
 // if there is a search parameter, $requestData['search']['value'] contains search parameter
 if( !empty($requestData['search']['value']) ) {   
 	$sql.=" AND ( item LIKE '".$requestData['search']['value']."%' ";    
-	$sql.=" OR length LIKE '".$requestData['search']['value']."%' ";
+	// $sql.=" OR length LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR cat LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR dims LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR die LIKE '".$requestData['search']['value']."%' ";
@@ -55,7 +55,9 @@ if( !empty($requestData['search']['value']) ) {
 
 	// $sql.=" OR employee_age LIKE '".$requestData['search']['value']."%' )";
 }
-
+if( !empty($requestData['columns'][1]['search']['value']) ){  
+	$sql.=" AND length = ".$requestData['columns'][1]['search']['value'];
+}
 
 
 // $item = '1016202';
@@ -66,11 +68,11 @@ if( !empty($requestData['search']['value']) ) {
 
 
 
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get inventory");
+$query=mysqli_query($conn, $sql) or die("tracjbck.php: get inventory");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
 $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */	
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get inventory");
+$query=mysqli_query($conn, $sql) or die("tracjbck.php: get inventory");
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array

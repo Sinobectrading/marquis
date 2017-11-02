@@ -30,6 +30,16 @@ h2 {
 a:hover {
   text-decoration: none;
 }
+
+table.dataTable span.highlight {
+  background-color: #FFFF88;
+  border-radius: 0.28571429rem;
+}
+
+table.dataTable span.column_highlight {
+  background-color: #ffcc99;
+  border-radius: 0.28571429rem;
+}
 #contact-section  #track_filter input[type="search"]{
     height: 40px;
     width: 200px;
@@ -1210,6 +1220,10 @@ hr.ssf {
   font-size: 1.5em;
 }
 @media screen  and (max-width: 768px) {
+  #footer {
+    position: absolute;
+    bottom: 0
+  }
   .wrapper_404 h1 {
     font-size: 65px ! important;
   }
